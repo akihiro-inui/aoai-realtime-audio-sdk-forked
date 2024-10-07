@@ -46,13 +46,13 @@ function createConfigMessage(): SessionUpdateMessage {
         {
           "type": "function",
           "name": "music_controller",
-          "description": "Controls the music player in the car. You can play, pause, stop, skip to the next track, or go back to the previous track.",
+          "description": "Controls the music player in the car. You can play, pause, stop, skip to the next track, go back to the previous track, or turn up/down the volume.",
           "parameters": {
             "type": "object",
             "properties": {
               "action": {
                 "type": "string",
-                "description": "The action for the music player control. It can play, pause, stop, next, or previous.",
+                "description": "The action for the music player control. It can play, pause, stop, next, previous, or adjust the volume.",
               },
             },
             "required": ["action"]
@@ -60,19 +60,23 @@ function createConfigMessage(): SessionUpdateMessage {
         },
         {
           "type": "function",
-          "name": "open_car_windows",
+          "name": "car_windows_controller",
           "description": "Opens specified car windows to allow fresh air into the vehicle or improve ventilation. You can choose to open individual windows or all windows at once.",
           "parameters": {
             "type": "object",
             "properties": {
               "window_positions": {
                 "type": "array",
-                "description": "A list of window positions to open. Possible values include 'front_left', 'front_right', 'rear_left', 'rear_right', or 'all'.",
+                "description": "A list of window positions to adjust. Possible values include 'front_left', 'front_right', 'rear_left', 'rear_right', or 'all'.",
                 "items": {
                   "type": "string",
                   "enum": ["front_left", "front_right", "rear_left", "rear_right", "all"]
                 }
-              }
+              },
+              "action": {
+                "type": "string",
+                "description": "The action for the car windows control. It can open or close the windows.",
+              },
             },
             "required": ["window_positions"]
           }
